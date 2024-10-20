@@ -40,6 +40,7 @@
     <script>
         const contentDiv = document.getElementById('content');
         const messageP = document.getElementById('message');
+        const originalTitle = document.title;
 
         window.addEventListener('blur', () => {
             messageP.textContent = '主人，看看我嘛！';
@@ -48,6 +49,7 @@
             contentDiv.style.color = 'red';
             contentDiv.style.borderColor = 'red';
             document.body.style.backgroundColor = '#f8d7da';
+            document.title = '快回来！';
         });
 
         window.addEventListener('focus', () => {
@@ -56,7 +58,8 @@
             messageP.style.fontSize = '30px';
             contentDiv.style.color = 'black';
             contentDiv.style.borderColor = 'black';
-            document.body.style.backgroundColor = '#d4edda';
+            document.body.style.backgroundColor = '#fff';
+            document.title = originalTitle;
         });
     </script>
 </body>
