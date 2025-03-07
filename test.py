@@ -1,6 +1,7 @@
 import requests
 import random
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 def send_request():
     random_qq = random.randint(100000, 99999999)
@@ -11,9 +12,11 @@ def send_request():
     except requests.RequestException as e:
         print(f"fail:{e}")
 
-def generate_bulk_requests(count):
-    for _ in range(count):
-        send_request()
-        time.sleep(0.01)
+def generate_bulk_requests(count, thread_count):
+    with ThreadPoolExecutor(max_workers=thread_count) as executor:
+        futures = [executor.submit(send_request) for _ in range(count)]
+        for future in as_completed(futures):
+            future.result()  # Wait for each future to complete
 
-generate_bulk_requests(100000)
+# 200 threads
+generate_bulk_requests(100000, 200)
