@@ -4,49 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>焦点检测</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-            transition: background-color 0.5s ease;
-            background-color: #f0f0f0;
-        }
-        #content {
-            font-size: 24px;
-            padding: 20px;
-            border: 2px solid #000;
-            display: inline-block;
-            transition: color 0.5s ease, border-color 0.5s ease;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            font-size: 36px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        #message {
-            font-size: 20px;
-            color: #666;
-            margin-top: 20px;
-            transition: opacity 0.5s ease, color 0.5s ease, font-size 0.5s ease;
-        }
-        .hide-button {
-            margin-top: 10px;
-            cursor: pointer;
-            color: blue;
-        }
-        #landlord {
-            margin-top: 30px;
-        }
-        #live2d-widget {
-            width: 200px;
-            height: 300px;
-            margin: 0 auto;
-        }
-    </style>
 </head>
 <body>
     <div id="content">焦点测试</div>
@@ -55,31 +12,6 @@
     <div id="landlord">
         <div id="live2d-widget"></div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
-    <script>
-        const contentDiv = document.getElementById('content');
-        const messageP = document.getElementById('message');
-        const originalTitle = document.title;
-
-        window.addEventListener('blur', () => {
-            messageP.textContent = '主人，看看我嘛！';
-            messageP.style.fontSize = '30px';
-            contentDiv.style.color = 'red';
-            contentDiv.style.borderColor = 'red';
-            document.body.style.backgroundColor = '#f8d7da';
-            document.title = '快回来！';
-        });
-
-        window.addEventListener('focus', () => {
-            messageP.textContent = '主人别离开我嘛';
-            messageP.style.color = 'black';
-            messageP.style.fontSize = '20px';
-            contentDiv.style.color = 'black';
-            contentDiv.style.borderColor = 'black';
-            document.body.style.backgroundColor = '#f0f0f0';
-            document.title = originalTitle;
-        });
-    </script>
+    <script src="https://fastly.jsdelivr.net/npm/live2d-widgets@0/autoload.js"></script>
 </body>
 </html>
